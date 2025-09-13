@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+<!-- Zeichensatz UTF-8 → unterstützt Umlaute & Sonderzeichen -->
+    <meta charset="UTF-8">
+<!-- Responsives Design/Layout für mobile Geräte: passt sich automatisch der Bildschirmbreite an -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Titel der Seite (Tab-Beschriftung im Browser) -->
+    <title>Fotogram</title>
+<!-- externe CSS-Datei einbinden -->
+    <link rel="stylesheet" href="style.css">
+<!-- Favicon einbinden (kleines Icon im Browser-Tab) -->
+    <link rel="icon" href="/favicon/fotogram-favicon.png" type="image/png">
+</head>
+<!-- ===================================================
+     BODY-BEREICH
+=================================================== -->
+
+<body>
+<!-- ================= HEADER ================= -->
+<!-- HEADER: enthält Inhaltsbegrenzung und das Logo -->
+    <header class="main-header">
+        <!-- Wrapper für den Inhalt: begrenzt Breite, zentriert -->
+        <div class="container">
+            <!-- Brand-Bereich: nur Logo -->
+            <div class="brand">
+                <!-- Logo wird als SVG eingebunden -->
+                <img class="brand-logo" src="./logo/fotogram_logo.svg" alt="Logo">
+            </div>
+        </div>
+    </header>
+    <!-- ================= MAIN CONTENT ================= -->
+    <!-- MAIN-Container: Hauptinhalt der Seite mit untertitel-Tag und zwei untergeordneten Containern:
+     1. Untertitel-Tag
+     2. Wrapper-Container für die Begrenzung des Inhalts
+     3. Galerie-Container für die Bilder -->
+    <main>
+    <!-- Untertitel der Seite -->
+        <p class="subtitle">Your personal photo album</p>
+    <!-- Wrapper-Container: begrenzt den Inhalt -->
+        <div class="main-content-wrapper">
+    <!-- Galerie-Container: hier Bilder werden hier per JavaScript eingefügt -->
+        <div class="gallery" id="gallery">
+            <!-- Galerie-Container: wird per JS befüllt -->
+        </div>
+        </div>
+    </main>
+<!-- ===================================================
+     MODAL: Bildanzeige in groß
+     Wird angezeigt, wenn ein Bild in der Galerie angeklickt wird
+=================================================== -->
+
+<!-- Overlay für die vergrößerte Bildansicht -->
+<div class="modal" id="imageModal">
+
+    <!-- Modal-Inhalt -->
+    <div class="modal-content">
+
+        <!-- Schließen-Button (×) -->
+        <span class="close-btn" id="closeModal">&times;</span>
+
+        <!-- Großes Bild -->
+        <img class="modal-img" id="modalImage" src="" alt="">
+
+        <!-- Titel / Bildbeschreibung -->
+        <div class="modal-title" id="modalTitle"></div>
+
+        <!-- Navigation: vorheriges / nächstes Bild -->
+        <button class="nav-btn prev" id="prevBtn">&#10094;</button>
+        <button class="nav-btn next" id="nextBtn">&#10095;</button>
+
+        <!-- Zähler: zeigt aktuelle Bildnummer / Gesamtanzahl -->
+        <div class="modal-counter" id="modalCounter"></div>
+
+    </div>
+</div>
+
+<!-- ===================================================
+     FOOTER-BEREICH
+=================================================== -->
+<footer>
+    <p>© 2023 Developer Attacente GmbH</p>
+</footer>
+
+<!-- ================== EXTERNE JAVASCRIPT-DATEI EINBINDEN ================== -->
+<script src="script.js"></script>
+
+
+</body>
+
+</html>
