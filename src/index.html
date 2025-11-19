@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Titel der Seite -->
+    <title>Fotogram</title>
+    <!-- Einbindung → Externe CSS-Datei  -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Einbindung → Favicon -->
+   <link rel="icon" type="image/png" href="../public/fotogram-favicon.png">
+</head>
+<body>
+<!-- 1️⃣ Header-Container -->
+    <header>
+        <div class="header-content">
+            <div class="logo-container"> 
+                <img class="header-logo" src="../public/fotogram_logo.svg" alt="Fotogram Logo">
+            </div>
+        </div>
+    </header>
+<!-- 2️⃣ Main-Container -->
+    <main>
+        <div class="main-content">
+           <p class="subtitle">Your personal photo album</p>
+          <div class="bilder-container" id="bilder-container">
+            <!-- Bilder-Container → Hier werden Bilder per JS eingefügt -->
+          </div>
+        </div>
+    </main>
+<!-- 3️⃣ Dialog-Container -->
+    <dialog id="bilder-dialog" class="bilder-dialog">
+        <div class="dialog-content">
+             <button class="close-button" id="close-dialog">&times;</button>
+             <img class="dialog-img" id="dialog-img" src="" alt="Vergrößertes Bild">
+             <div class="dialog-title" id="dialog-title"></div>
+             <div id="dialogZaehler" class="dialog-zaehler"></div>
+             <button class="nav-btn prev" id="prevBtn">&#10094;</button>
+             <button class="nav-btn next" id="nextBtn">&#10095;</button>
+        </div>
+    </dialog>
+<!-- 4️⃣ Footer-Container -->
+    <footer>
+        <div class="footer-content">
+            <p class="footer-copy">© 2025 Alaa Eldin ABDALLA. Alle Rechte vorbehalten.</p>
+        </div>
+    </footer>
+<!-- 5️⃣ Einbindung → Externe JS-Datei -->
+    <script src="script.js"></script>
+
+</body>
+</html>

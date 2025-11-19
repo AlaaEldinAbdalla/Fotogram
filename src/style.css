@@ -1,0 +1,314 @@
+/* ========== Externe CSS-Datei – Projekt Fotogram ==========*/
+
+/* 1️⃣ Grundreinnigung - Für die gesamte Seite */
+* {
+  margin: 0;
+  padding: 0;
+}
+/* 2️⃣ CSS-Variablen – Für Farben & Schrift */
+:root {
+  --bg_darkblue_dark: #06171e;
+  --bg_darkblue_light: #0d3240;
+  --text_light: #f3f4f6;
+  --text_dark: #111827;
+  --accent-yellow: #fdd835;
+  --accent-purple: #6a11cb;
+  --accent-red: #ff4b4b;
+}
+/* 3️⃣ Grundeinstellung Für html & bodye */
+html, body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  scroll-behavior: smooth;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+/* 4️⃣ Styling - Header-Container */
+header {
+  background-color: var(--bg_darkblue_light);
+  padding: 40px 20px;
+  min-height: 60px;
+}
+.header-content {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+.header-logo {
+  height: auto;
+  width: 200px;
+}
+/* 4️⃣ Media Queries - Header-Container */
+@media (max-width: 600px) {
+  .logo-container {
+    justify-content: center;
+  }
+  .header-logo {
+    width: 150px;
+  }
+}
+/* 5️⃣ Styling - Main-Container */
+main {
+  background-color: var(--bg_darkblue_dark);
+  flex: 1;
+}
+.main-content {
+  max-width: 1440px;
+}
+.subtitle {
+  text-align: center;
+  color: white;
+  font-size: 1.5rem;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+.bilder-container {
+  max-width: 100%;
+  display: flex;
+   justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding-bottom: 40px;
+ 
+  
+}
+/* Einzelne Bild-Container */
+.container-img {
+  width: 180px;
+  height: 150px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.container-img:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(125, 29, 29, 0.15);
+}
+.container-img.active {
+  border: 3px solid #6a11cb;
+  box-shadow: 0 0 0 3px rgba(106, 17, 203, 0.3);
+  transform: scale(1.02);
+}
+.container-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: block;
+  transition: all 2s ease-in;
+}
+/* 6️⃣ Styling - Dialog-Container */
+.bilder-dialog {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  background: transparent;
+  transform: translateX(100px);
+  transition: opacity 1.5s ease,transform 1.5s cubic-bezier(0.22, 1, 0.36, 1); 
+}
+.bilder-dialog::backdrop {
+background:  #0d3240;
+transition: background 0.8s ease;
+}
+.bilder-dialog[open] {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateX(0);
+}
+.bilder-dialog.closing {
+  opacity: 0;
+  transform: translateX(-100px);
+}
+.dialog-content {
+  position: relative;
+  max-width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+/* --- Bild im Dialog --- */
+.dialog-img {
+  width: 90vw;        
+  max-width: 800px;     
+  aspect-ratio: 16/9;  
+  height: auto;         
+  object-fit: cover;    
+  border-radius: 12px;
+}
+/* --- Titel im Dialog --- */
+.dialog-title {
+  color: white;
+  font-size: 1.25rem;
+  text-align: center;
+}
+/* --- Close-Button im Dialog --- */
+#close-dialog {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  background: transparent; 
+  color:#ff4b4b;
+  font-size: 1.8rem;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.25s ease, transform 0.2s ease;
+  z-index: 10;
+}
+#close-dialog:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1); 
+  border-radius: 4px;
+}
+/* --- Navigationsbuttons im Dialog --- */
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background-color: transparent; 
+  color: #ff4b4b;
+  font-size: 1.8rem;
+  border: none;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.2s ease;
+  z-index: 10;
+  border-radius: 4px;
+}
+.nav-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-50%) scale(1.1);
+}
+.nav-btn:focus-visible {
+  outline: 2px solid #ff4b4b;
+  outline-offset: 2px;
+}
+/* --- Positionierung links/rechts im Dialog --- */
+.nav-btn.prev { left: 12px; }
+.nav-btn.next { right: 12px; }
+/* --- Deaktiviert im Dialog --- */
+.nav-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+/* --- Zähler im Dialog --- */
+.dialog-zaehler {
+  position: absolute;
+  bottom: 45px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.2rem;
+  font-weight: 500;
+  color:#fdd835;         
+  background-color: rgba(0, 0, 0, 0.2); 
+  border-radius: 6px;
+  user-select: none;
+  transition: background 0.25s ease;
+}
+.bilder-dialog:hover .dialog-zaehler {
+  background-color: rgba(0, 0, 0, 0.35);
+}
+/* 6️⃣ Media Queries - Dialog-Container */
+@media (max-width: 800px) {
+  .dialog-content {
+    max-width: 95%;
+    padding: 0;
+  }
+  #close-dialog {
+    width: 35px;
+    height: 35px;
+    font-size: 1.5rem;
+  }
+  .nav-btn {
+    width: 35px;
+    height: 35px;
+    font-size: 1.5rem;
+  }
+  .dialog-zaehler {
+    font-size: 1rem;
+    bottom: 35px;
+    padding: 3px 8px;
+  }
+  @media (max-width: 600px) {
+    .subtitle { font-size: 1.2rem; } 
+}
+}
+
+@media (max-width: 500px) {
+  .dialog-img {
+    width: 95vw;     /* fast volle Breite */
+    max-width: none; /* Begrenzung weg */
+  }
+}
+@media (max-width: 480px) {
+  .dialog-content {
+    max-width: 100%;
+  }
+  #close-dialog, .nav-btn {
+    width: 30px;
+    height: 30px;
+    font-size: 1.2rem;
+  }
+  .dialog-zaehler {
+    font-size: 0.9rem;
+    bottom: 25px;
+    padding: 2px 6px;
+  }
+}
+/* 7️⃣ Styling - Footer-Container */
+footer {
+  background-color: var(--bg_darkblue_light);
+  padding: 20px;
+  min-height: 60px;
+}
+.footer-content{
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.footer-copy {
+  text-align: center;
+  color: white;
+  font-size: 0.875rem;
+}
+/* 7️⃣ Media Queries - Footer-Container */
+@media (max-width: 1440px) {
+  .footer-content {
+    padding: 0 20px;
+  }
+}
+
+/* ========== Ende der CSS-Datei ==========*/
+
